@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -111,9 +111,10 @@ span.input-group-addon i {
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 </head>
+    
 <body>
-<!DOCTYPE html>
-<html lang="en">
+    
+    <html lang="en">
     <head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -132,15 +133,23 @@ span.input-group-addon i {
 
 		<title>Admin</title>
 	</head>
-	<body>
+<body>
 		<div class="container">
 			<div class="row main">
 				<div class="main-login main-center">
 				<h5>Let us know your budget.</h5>
                     <form action = "{{ request.path }}" method = "post">                    
+                        <div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">Let's travel together.</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Name"/>
+								</div>
+							</div>
+						</div>
                         
 						<div class="form-group">
-							<label for="name" class="cols-sm-2 control-label">Let's travel together.</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-plane" aria-hidden="true"></i></span>
@@ -181,7 +190,7 @@ span.input-group-addon i {
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-bed" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="living" id="password"  placeholder="Money for Living Arrangements"/>
+									<input type="text" class="form-control" name="living" id="password"  placeholder="Money for Living Arrangements"/>
 								</div>
 							</div>
 						</div>
@@ -197,9 +206,12 @@ span.input-group-addon i {
 						</div>
 -->
                             
+<!--
 						<div class="form-group ">
-							<a href="?" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Sumbit</a>
+							<a href="?" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Submit</a>
 						</div>
+-->
+                        <input type = "submit" value = "Submit" />
 					</form>
 				</div>
 			</div>
