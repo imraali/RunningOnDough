@@ -1,30 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-   <body>
-   
-      <table border = 1>
-         <thead>
-            <td>Name</td>
-            <td>Flight></td>
-            <td>Transportation</td>
-            <td>Food</td>
-             <td>Entertainment</td>
-             <td>Living</td>
-         </thead>
-         
-         {% for row in rows %}
-            <tr>
-               <td>{{row["name"]}}</td>
-               <td>{{row["flight"]}}</td>
-               <td> {{ row["transport"]}}</td>
-               <td>{{row['food']}}</td>	
-               <td>{{row['entertainment']}}</td>	
-               <td>{{row['living']}}</td>	
-            </tr>
-         {% endfor %}
-      </table>
-      
-      <a href = "/">Home</a>
-      
-   </body>
+<head>
+<style>
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+</head>
+<body>
+
+<table id="data">
+  <tr>
+    <th>Flights</th>
+    <th>Transportation</th>
+    <th>Food</th>
+    <th>Entertainment</th>
+    <th>Living</th>
+  </tr>
+  {% for row in rows %}
+    <tr>
+       <td>{{row[0]}}</td>
+       <td> {{ row[1]}}</td>
+       <td>{{row[2]}}</td>	
+       <td>{{row[3]}}</td>	
+       <td>{{row[4]}}</td>
+    </tr>
+ {% endfor %}
+</table>
+
+</body>
 </html>
