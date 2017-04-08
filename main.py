@@ -4,7 +4,10 @@ from flask import Flask, flash, redirect, render_template, request, session, abo
 import os
 from sqlalchemy.orm import sessionmaker
 from tabledef import *
-engine = create_engine('sqlite:///tutorial.db', echo=True)
+from flask import g
+
+DATABASE = 'users.db'
+engine = create_engine('sqlite:///users.db', echo=True)
  
 app = Flask(__name__)
 
