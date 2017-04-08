@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Flash Me</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/flat-ui.min.css" rel="stylesheet">
+	<link href="/css/style.css" rel="stylesheet">
+	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+</head>
+
+<body onload="getData()">
+	<div class="row demo-row">
+		<div class="col-xs-12">
+			<nav class="navbar navbar-inverse navbar-embossed" role="navigation">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+						<span class="sr-only">Toggle navigation</span>
+					</button>
+					<a class="navbar-brand" href="/">Flash Me</a>
+				</div>
+				<div class="collapse navbar-collapse" id="navbar-collapse-01">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/about">About Us</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<%= username %><b class="caret"></b></a>
+							<span class="dropdown-arrow"></span>
+							<ul class="dropdown-menu">
+								<li><a href="/profile/<%= uid %>">Profile</a></li>
+								<li class="divider"></li>
+								<li>
+									<a href="/main/performance">Performance</a>
+								</li>
+								<li class="divider"></li>
+								<li><a href="#">Sign Out</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</div>
+	<h1 class="text-center"><%= class_name %></h1>
+	<div class="container">
+		<form action="/class/<%= class_name%>" class="form-horizontal" method="POST">
+			<div class="form-group">
+				<label for="question" class="col-sm-2 control-label">Question</label>
+				<!-- need to add an option that lets them add n number of questions -->
+				<div class="col-sm-8">
+					<input name="question" type="text" class="form-control" id="question" placeholder="Enter a question for <%= class_name %> here" style="cursor: auto;" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="answer" class="col-sm-2 control-label">Answer</label>
+				<!-- need to add an option that lets them add n number of questions -->
+				<div class="col-sm-8">
+					<input name="answer" type="text" class="form-control" id="answer" placeholder="Enter answer" style="cursor: auto;" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-sm-3">
+						<button type="submit" class="btn btn-block btn-primary">Add Question</button>
+					</div>
+					<div class="col-sm-6"></div>
+					<div class="col-sm-3">
+						<a href="/quiz/<%=class_name%>" class="btn btn-block btn-info">Start Quiz</a>
+					</div>
+				</div>
+			</div>
+		</form>
+		<hr>
+	</div>
+	<div class="container">
+		<% if(!questions||!questions[0]) { %>
+			<p>No question added yet ! </p>
+			<% } else { %>
+				<% questions.forEach(function(qa){ %>
+					<p>
+						<div class="t_question">
+							<%=qa.question %>
+						</div>
+
+						<div class="t_answer">
+							<%= qa.answer   %>
+						</div>
+					</p>
+					<% }); } %>
+	</div>
+	<div class="container">
+		<hr>
+		<blockquote>SpartaHack 2016 | All Rights Reserved.</blockquote>
+	</div>
+	<script src="/js/vendor/jquery.min.js"></script>
+	<script src="/js/vendor/video.js"></script>
+	<script src="/js/flat-ui.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('.t_question').click(function () {
+				$(this).next().toggle();
+			});
+			event.preventDefault();
+		});
+	</script>
+</body>
+
+</html>
