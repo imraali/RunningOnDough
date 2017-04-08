@@ -38,7 +38,7 @@ def three():
     con.row_factory = sql.Row
 
     cur = con.cursor()
-    cur.execute("select * from users")
+    cur.execute("select min(flight), min(transport), min(food), min(entertainment), min(living) from users")
 
     rows = cur.fetchall();
     return render_template('page3.html', rows=rows)
