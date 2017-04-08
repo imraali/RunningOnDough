@@ -14,11 +14,11 @@ class User(Base):
  
     id = Column('id', Integer, primary_key = True)
     name = Column(String(100))
-    flight = Column(String(100))
-    transport = Column(String(100))
-    food = Column(String(100))
-    entertainment = Column(String(100))
-    living = Column(String(100))
+    flight = Column(Integer)
+    transport = Column(Integer)
+    food = Column(Integer)
+    entertainment = Column(Integer)
+    living = Column(Integer)
 
     def __init__(self, name, flight, transport, food, entertainment, living):
         """"""
