@@ -1,5 +1,9 @@
 <!doctype html>
 <html>
+    <!-- Bootstrap 3.3.2 -->
+    <head>
+        
+</head> 
    <body>
    
       <table border = 1>
@@ -11,7 +15,7 @@
              <td>Entertainment</td>
              <td>Living</td>
          </thead>
-         
+         <tbody>
          {% for row in rows %}
             <tr>
                <td>{{row["name"]}}</td>
@@ -21,7 +25,9 @@
                <td>{{row['entertainment']}}</td>	
                <td>{{row['living']}}</td>	
             </tr>
-         {% endfor %}
+             {% endfor %}
+        </tbody>
+         
       </table>
       
       <a href = "/">Home</a>
