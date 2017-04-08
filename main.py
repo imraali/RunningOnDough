@@ -10,24 +10,21 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('login.html')
+#    <input type="submit" name="submit" value="Do Something">
+    if request.method == 'POST':
+        return render_template('page2.html')
+    return render_template('page1.html')
 
-@app.route('/fill', methods = ['GET', 'POST'])
-def fill():
-#    if request.method == 'POST':
-#        user = users(request.form['name'], request.form['flight'],
-#        request.form['transport'], request.form['food'], request.form['entertainment'], request.form['living'])
-#
-#        db.session.add(user)
-#        db.session.commit()
-#
-#        return render_template('show.html', users = users.query.all() )
-    return render_template('fill.html')
+@app.route('/form')
+def two():
+    if request.method == 'POST':
+        return render_template('page3.html')
+    return render_template('page2.html')
 
-#@app.route('/all')
-#def show_all():
-#    engine.execute('select * from users)
-#    return render_template('show.html', users = users.query.all() )
+
+@app.route('/plan')
+def three():
+    return render_template('page3.html')
 
 #@app.route("/logout")
 #def logout():
