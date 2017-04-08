@@ -10,15 +10,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-#    <input type="submit" name="submit" value="Do Something">
-    if request.method == 'POST':
-        return render_template('page2.html')
     return render_template('page1.html')
 
 @app.route('/form')
 def two():
-    if request.method == 'POST':
-        return render_template('page3.html')
     return render_template('page2.html')
 
 
