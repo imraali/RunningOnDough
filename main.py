@@ -1,28 +1,47 @@
-
-from flask import Flask
-from flask import Flask, flash, redirect, render_template, request, session, abort
+from flask import Flask, render_template,redirect, request, flash,g,session,url_for
+import sqlite3 as sql
 import os
-from sqlalchemy.orm import sessionmaker
-from tabledef import *
-from flask import g
+from models import *
 
-DATABASE = 'users.db'
-engine = create_engine('sqlite:///users.db', echo=True)
- 
+conn = sqlite3.connect('database.db')
 app = Flask(__name__)
 
-@app.route('/')
+@app.route("/",methods=["GET","POST"])
 def home():
     return render_template('page1.html')
 
-@app.route('/form')
+@app.route('/form', methods=["GET","POST"])
 def two():
     return render_template('page2.html')
+
+@app.route("/filled", methods=["GET","POST"])
+def filled():
+    name = request.form['name']
+    flight = request.form['flight']
+    transport = request.form['transport']
+    food = request.form.get('food')
+    entertainment = request.form.get('entertainment')
+    living = request.form.get('living')
+
+    with sql.connect("database.db") as con:
+            cur = con.cursor()
+            cur.execute("INSERT INTO users (name,flight,transport,food,entertainment,living) VALUES (?,?,?,?,?,?)", (name,flight,transport,food,entertainment,living) )
+            
+            con.commit()
+    return render_template("page2.html") 
+    con.close()
 
 
 @app.route('/plan')
 def three():
-    return render_template('page3.html')
+    con = sql.connect("database.db")
+    con.row_factory = sql.Row
+
+    cur = con.cursor()
+    cur.execute("select * from users")
+
+    rows = cur.fetchall();
+    return render_template('page3.html', rows=rows)
 
 #@app.route("/logout")
 #def logout():
@@ -30,5 +49,4 @@ def three():
 #    return home()
  
 if __name__ == "__main__":
-    app.secret_key = os.urandom(12)
-    app.run(debug=True)
+    app.run(debug = True)

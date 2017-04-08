@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+   <body>
+   
+      <table border = 1>
+         <thead>
+            <td>Name</td>
+            <td>Flight></td>
+            <td>Transportation</td>
+            <td>Food</td>
+             <td>Entertainment</td>
+             <td>Living</td>
+         </thead>
+         
+         {% for row in rows %}
+            <tr>
+               <td>{{row["name"]}}</td>
+               <td>{{row["flight"]}}</td>
+               <td> {{ row["transport"]}}</td>
+               <td>{{row['food']}}</td>	
+               <td>{{row['entertainment']}}</td>	
+               <td>{{row['living']}}</td>	
+            </tr>
+         {% endfor %}
+      </table>
+      
+      <a href = "/">Home</a>
+      
+   </body>
+</html>
